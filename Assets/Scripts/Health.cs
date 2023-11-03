@@ -22,17 +22,16 @@ public class Health : MonoBehaviour
     private void ChangeHealth(int value)
     {
         _health += value;
-
-        switch (_health)
+        if(_health <= 0)
         {
-            case <= 0:
-                Death();
-                break;
-            default:
-                float _healthAsPercentage = (float)_health / _maxHealth;
-                HealthChanged?.Invoke(_healthAsPercentage);
-                break;
+            Death();
         }
+        else
+        {
+            float _healthAsPercentage = (float)_health / _maxHealth;
+            HealthChanged?.Invoke(_healthAsPercentage);
+        }
+
         if (_health > _maxHealth)
             _health -= _maxHealth;
     }

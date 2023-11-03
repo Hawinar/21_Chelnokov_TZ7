@@ -29,16 +29,14 @@ public class Fuel : MonoBehaviour
     public void ChangeFuel(int value)
     {
         _fuel += value;
-
-        switch (_fuel)
+        if( _fuel <= 0 )
         {
-            case <= 0:
-                Death();
-                break;
-            default:
-                float _fuelAsPercentage = (float)_fuel / _maxFuel;
-                FuelChanged?.Invoke(_fuelAsPercentage);
-                break;
+            Death();
+        }
+        else
+        {
+            float _fuelAsPercentage = (float)_fuel / _maxFuel;
+            FuelChanged?.Invoke(_fuelAsPercentage);
         }
         if (_fuel > _maxFuel)
             _fuel = _maxFuel;

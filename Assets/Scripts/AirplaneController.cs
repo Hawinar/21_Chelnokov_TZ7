@@ -16,8 +16,6 @@ public class AirplaneController : MonoBehaviour
     {
         int rnd = UnityEngine.Random.Range(0, skins.Count);
         _spriteRenderer.sprite = skins[rnd].sprite;
-
-        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
